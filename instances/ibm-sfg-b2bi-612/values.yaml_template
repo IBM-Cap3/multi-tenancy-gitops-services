@@ -161,7 +161,7 @@ ingress:
   port:
 
 dataSetup:
-  enabled: false
+  enabled: ${DATASETUP_ENABLED}
   upgrade: false
   image:
     repository: "cp.icr.io/cp/ibm-b2bi/b2bi-dbsetup"
@@ -285,11 +285,11 @@ setupCfg:
 
   # Provide the DB attributes
   dbVendor: db2
-  dbHost: 172.21.57.252
-  dbPort: 50000
+  dbHost: ${DBHOST}
+  dbPort: ${DBPORT}
   dbData: B2BIDB
   dbDrivers: db2jcc4.jar
-  dbCreateSchema: false
+  dbCreateSchema: ${DBCREATESCHEMA}
   oracleUseServiceName: false
   # Values can be either true or false 
   usessl: false
@@ -328,11 +328,11 @@ setupCfg:
   jmsConnectionFactory: com.ibm.mq.jms.MQQueueConnectionFactory
   jmsConnectionFactoryInstantiator:
   jmsQueueName: DEV.QUEUE.1
-  jmsHost: 172.21.207.193
-  jmsPort: 1414
-  jmsConnectionNameList: 172.21.207.193(1414)
+  jmsHost: ${JMSHOST}
+  jmsPort: ${JMSPORT}
+  jmsConnectionNameList: ${JMSCONNECTIONNAMELIST}
   # Applicable for IBMMQ
-  jmsChannel: DEV.APP.SVRCONN
+  jmsChannel: ${JSMCHANNEL}
   jmsEnableSsl: false
   
   # Name of JMS secret if available
@@ -525,7 +525,7 @@ asi:
     
   ingress:
     internal:
-      host: asi.itzroks-664003h6xc-mo6som-6ccd7f378ae819553d37d5f2ee142bd6-0000.us-east.containers.appdomain.cloud
+      host: ${INGRESS_INTERNAL_HOST_ASI}
       tls:
         enabled: true
         secretName: ""
@@ -535,7 +535,7 @@ asi:
       #    servicePort: "my-http"
       #    enableHttps: false
     external:
-      host: ""
+      host: ${INGRESS_EXTERNAL_HOST_ASI}
       tls:
         enabled: true
         secretName: ""
@@ -806,7 +806,7 @@ ac:
       
   ingress:
     internal:
-      host: ac.itzroks-664003h6xc-mo6som-6ccd7f378ae819553d37d5f2ee142bd6-0000.us-east.containers.appdomain.cloud
+      host: ${INGRESS_INTERNAL_HOST_AC}
       tls:
         enabled: true
         secretName: ""
@@ -816,7 +816,7 @@ ac:
       #    servicePort: "my-http"
       #    enableHttps: false
     external:
-      host: ""
+      host: ${INGRESS_EXTERNAL_HOST_AC}
       tls:
         enabled: true
         secretName: ""
@@ -1052,7 +1052,7 @@ api:
 
   ingress:
     internal:
-      host: api.itzroks-664003h6xc-mo6som-6ccd7f378ae819553d37d5f2ee142bd6-0000.us-east.containers.appdomain.cloud
+      host: ${INGRESS_INTERNAL_HOST_API}
       tls:
         enabled: true
         secretName: ""
